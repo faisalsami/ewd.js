@@ -1,9 +1,10 @@
 # EWD.js
  
-Node.js-based Application Framework for MongoDB, Cach&#233;, GlobalsDB and GT.M
+Node.js-based Application Framework and Application Server/Container for use with Cach&#233;, GlobalsDB, GT.M and 
+MongoDB databases
 
 Rob Tweed <rtweed@mgateway.com>  
-9 May 2014, M/Gateway Developments Ltd [http://www.mgateway.com](http://www.mgateway.com)  
+9 May 2014, M/Gateway Developments Ltd [http://www.mgateway.com](http://www.mgateway.com)
 
 Twitter: @rtweed
 
@@ -11,10 +12,16 @@ Google Group for discussions, support, advice etc: [http://groups.google.co.uk/g
 
 ## Acknowledgements
 
-Many thanks to Christopher Edwards (christopher.edwards@krminc.com) for his work on Node Inspector
+Many thanks to:
+   Christopher Edwards (christopher.edwards@krminc.com) for his work on Node Inspector
 integration which has been adapted and included in EWD.js (build 67 and later).
 
-Thanks also to Ward De Backer for suggestions relating to user authentication
+   Ward De Backer for numerous functional additions
+
+   Mike Clayton for the original design of the UpStart files, and for 
+help identifying many bugs over the years!
+
+   David Wicksell for his ongoing work on the NodeM interface for GT.M
 
 ## Installing EWD.js
 
@@ -27,12 +34,26 @@ Then, assuming you've already installed Node.js:
 
 Modify that first *cd* command as appropriate for your system.
 
-In the *node_modules/ewdjs* directory that has now been created, you'll find a file named *install.js*.  It is 
-recommended that you run this in order to create the run-time environment and to move the files in
-the repository to their correct run-time destinations.  So run the following:
+During the installation process, you’ll be asked to confirm the path in which EWD.js has been installed (ie the
+directory you'd switched to using *cd*).  You should normally accept the default that it suggests by 
+pressing the Enter key, eg: 
 
-       cd node_modules/ewdjs
-       node install
+       Install EWD.js to directory path (/home/ubuntu/ewdjs):
+
+The essential sub-components of EWD.js will be installed relative to this path.
+You’ll then be asked if you want to install the extra, optional sub-components for EWD.js:
+
+  
+       EWD.js has been installed and configured successfully
+       
+       Do you want to install the additional resources from the /extras directory?
+       If you're new to EWD.js or want to create a test environment, enter Y
+       If you're an experienced user or this is a production environment, enter N
+       Enter Y/N: 
+
+
+EWD.js is now ready for use!
+
 
 
 ## Running EWD.js
@@ -58,9 +79,10 @@ EC2 instance.
 
 Start up the Ubuntu 14.04 machine.  Login and type:
 
-      sudo apt-get install -y subversion
-      svn export https://github.com/robtweed/ewd.js/trunk/gtm gtm
-      source gtm/install.sh
+       cd ~
+       sudo apt-get -y install git
+       git clone https://github.com/robtweed/ewd-installers
+       source ewd-installers/gtm/install.sh
 
 That's it!  You can test that everything has worked by typing:
 
@@ -83,9 +105,10 @@ version will do.
 
 Start up the Ubuntu machine.  Login and type:
 
-      sudo apt-get install -y subversion
-      svn export https://github.com/robtweed/ewd.js/trunk/globalsdb globalsdb
-      source globalsdb/install.sh
+       cd ~
+       sudo apt-get -y install git
+       git clone https://github.com/robtweed/ewd-installers
+       source ewd-installers/globalsdb/install.sh
 
 That's it!  Start EWD.js by typing:
 
@@ -99,9 +122,10 @@ Start the EWDMonitor application using the usual URL:
 
 You can automatically upgrade Node.js and NodeM and install EWD.js on a dEWDrop VM as follows:
 
-      sudo apt-get install subversion
-      svn export https://github.com/robtweed/ewd.js/trunk/dEWDrop dewdrop
-      source dewdrop/upgrade.sh
+       cd ~
+       sudo apt-get -y install git
+       git clone https://github.com/robtweed/ewd-installers
+       source ewd-installers/dEWDrop/upgrade.sh
 
 When finished, you can start up EWD.js using:
 
@@ -124,7 +148,7 @@ see: [http://gradvs1.mgateway.com/download/EWDjs.pdf]
 
 ## License
 
- Copyright (c) 2013-14 M/Gateway Developments Ltd,                           
+ Copyright (c) 2013-16 M/Gateway Developments Ltd,
  Reigate, Surrey UK.                                                      
  All rights reserved.                                                     
                                                                            
